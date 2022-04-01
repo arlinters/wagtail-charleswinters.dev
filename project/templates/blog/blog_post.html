@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static wagtailmarkdown wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<div class="pb-4">
+<h1>{{ page.title }}</h1>
+	<a class="text-slate-500 self-start " href={{ page.author.github_url}}>@{{ page.author.github_username}}</a>
+</div>
+<article>
+	{% for block in page.body %}
+		{% include_block block%}
+	{% endfor %}
+	</article>
+{% endblock content %}

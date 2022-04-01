@@ -1,6 +1,21 @@
-{% extends 'theme/base.html' %}
+{% extends 'base.html' %}
+{% load wagtailimages_tags %}
+
+
 {% block content %}
-	<section class="flex items-center justify-center h-screen">
-		<h1 class="text-5xl">Django + Tailwind = ❤️ woo</h1>
-	</section>
+		{% image page.author.image width-250 as image %}
+		{% image page.author.image width-250 format-webp as webp_image %}
+	<div class="grid place-items-center h-screen">
+		<div class="flex flex-col items-center">
+		<picture>
+			<source srcset="{{ webp_image.url }}" type="image/webp">
+			<img class="rounded-full" src="{{ image.url }}" alt="{{ image.alt }}" />
+		</picture>
+		<h1 class="font-medium leading-tight text-5xl mt-4 mb-2">
+			Hi, I'm <span class="text-teal-600">{{page.author.first_name }} {{ page.author.last_name}}</span>.
+		</h1>
+		<a class="text-slate-500 self-start" href={{ page.author.github_url}}>@{{ page.author.github_username}}</a>
+		<p>Welcome to my headspace.</p>
+	</div>
+</div>
 {% endblock content%}

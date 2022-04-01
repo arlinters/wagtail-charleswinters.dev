@@ -42,7 +42,18 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        container: (theme) => ({
+            // To center containers by default
+            center: true,
+            maxWidth: theme('containerWidth.md'),
+            // To add horizontal padding by default
+            padding: theme("spacing.4"),
+          }),
+        extend: {
+            containerWidth: {
+                'md':'768px',
+            }
+        },
     },
     plugins: [
         /**

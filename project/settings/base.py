@@ -25,6 +25,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     'home',
+    'blog',
+    'author',
+    'streams',
     'search',
 
     'wagtail.contrib.forms',
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
+    'wagtailmarkdown'
 ]
 
 MIDDLEWARE = [
@@ -168,7 +172,14 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'wagtail.search.backends.database',
     }
 }
-
+WAGTAILMARKDOWN = {
+    "autodownload_fontawesome": True,
+    "allowed_tags": [],  # optional. a list of HTML tags. e.g. ['div', 'p', 'a']
+    "allowed_styles": [],  # optional. a list of styles
+    "allowed_attributes": {},  # optional. a dict with HTML tag as key and a list of attributes as value
+    "extensions": [],  # optional. a list of python-markdown supported extensions
+    "extension_configs": {},  # optional. a dictionary with the extension name as key, and its configuration as value
+}
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
