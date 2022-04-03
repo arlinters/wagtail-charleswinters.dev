@@ -5,7 +5,7 @@
 {% block content %}
 		{% image page.author.image width-250 as image %}
 		{% image page.author.image width-250 format-webp as webp_image %}
-	<div class="grid place-items-center h-screen">
+	<div class="grid place-items-center mt-16">
 		<div class="flex flex-col items-center">
 		<picture>
 			<source srcset="{{ webp_image.url }}" type="image/webp">

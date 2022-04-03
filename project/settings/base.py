@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
-    'wagtailmarkdown'
+    'wagtailmarkdown',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
