@@ -5,17 +5,17 @@
 {% block content %}
 		{% image page.author.image width-250 as image %}
 		{% image page.author.image width-250 format-webp as webp_image %}
-	<div class="grid place-items-center mt-16">
-		<div class="flex flex-col items-center">
+	<div class="d-flex flex-column align-items-center">
 		<picture>
 			<source srcset="{{ webp_image.url }}" type="image/webp">
-			<img class="rounded-full" src="{{ image.url }}" alt="{{ image.alt }}" />
+			<img class="rounded" src="{{ image.url }}" alt="{{ image.alt }}" />
 		</picture>
-		<h1 class="font-medium leading-tight text-5xl mt-4 mb-2">
-			Hi, I'm <span class="text-teal-600">{{page.author.first_name }} {{ page.author.last_name}}</span>.
+		<div>
+		<h1 class="mt-4">
+			Hi, I'm <span>{{page.author.first_name }} {{ page.author.last_name}}</span>.
 		</h1>
-		<a class="text-slate-500 self-start" href={{ page.author.github_url}}>@{{ page.author.github_username}}</a>
-		<p>Welcome to my headspace.</p>
+		<a href={{ page.author.github_url}}>@{{ page.author.github_username}}</a>
 	</div>
+		{% comment %} <p>Welcome to my headspace.</p> {% endcomment %}
 </div>
 {% endblock content%}

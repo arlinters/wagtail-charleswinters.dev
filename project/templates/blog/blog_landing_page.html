@@ -3,6 +3,14 @@
 
 {% block content %}
 	{% for page in posts %}
-		{{page}}
+	<div class="border shadow-sm my-2 ">
+		<div class="card-body">
+			<a class="text-decoration-none" href="{{page.url}}">
+			<h4 class="card-title">{{page.title}}</h4>
+			<p class="card-text text-black">{{page.preview_text}}</p>
+			<p class="text-muted">{{page.first_published_at}}</p>
+			</a>
+		</div>
+	</div>
 	{% endfor %}
 {% endblock content %}

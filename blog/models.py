@@ -30,6 +30,7 @@ class BlogPost(Page):
       ('h6', CharBlock(icon='title', template='streams/content/h6.html')),
       ('image', ImageChooserBlock(icon='image', template='streams/content/content/image.html')),
   ])
+  preview_text = models.CharField(max_length=150)
   
   author = models.ForeignKey(
         'author.Author',
@@ -40,6 +41,7 @@ class BlogPost(Page):
 	)
   content_panels = Page.content_panels + [
 		SnippetChooserPanel("author"),
+    FieldPanel("preview_text"),
 		StreamFieldPanel("body")
   ]
 	
