@@ -14,7 +14,7 @@ from streams.blocks import CommonContentStreamBlock
 class BlogLandingPage(Page):
   def get_context(self, request, *args, **kwargs):
       context =  super().get_context(request, *args, **kwargs)
-      context['posts'] = BlogPost.objects.all()
+      context['posts'] = BlogPost.objects.all().order_by('-first_published_at')
       return context
    
 # Create your models here.

@@ -8,14 +8,25 @@
 	<div class="d-flex flex-column align-items-center">
 		<picture>
 			<source srcset="{{ webp_image.url }}" type="image/webp">
-			<img class="rounded" src="{{ image.url }}" alt="{{ image.alt }}" />
+			<img class="rounded-circle" src="{{ image.url }}" alt="{{ image.alt }}" />
 		</picture>
 		<div>
 		<h1 class="mt-4">
 			Hi, I'm <span>{{page.author.first_name }} {{ page.author.last_name}}</span>.
 		</h1>
-		<a href={{ page.author.github_url}}>@{{ page.author.github_username}}</a>
+		<a class="text-secondary" href={{ page.author.github_url}}>@{{ page.author.github_username}}</a>
 	</div>
+</div>
 		{% comment %} <p>Welcome to my headspace.</p> {% endcomment %}
+		<h2 class="mt-4">Latest Post</h2>
+		<div class="border shadow-sm my-4 ">
+			<div class="card-body">
+				<a class="text-decoration-none" href="{{page.url}}">
+				<h4 class="card-title">{{latest_post.title}}</h4>
+				<p class="card-text text-black">{{latest_post.preview_text}}</p>
+				<p class="text-muted">{{latest_post.first_published_at}}</p>
+				</a>
+			</div>
+		</div>
 </div>
 {% endblock content%}
