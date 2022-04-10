@@ -15,6 +15,7 @@ import os
 from django.core.management.utils import get_random_secret_key
 
 # SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+ALLOWED_HOSTS = ["127.0.0.1","localhost", "charleswinters-dev.herokuapp.com"]
 
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
