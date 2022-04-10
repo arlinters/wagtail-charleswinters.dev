@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from django.core.management.utils import get_random_secret_key
 
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+# SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -187,5 +187,6 @@ WAGTAILMARKDOWN = {
 }
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'import django_heroku
+BASE_URL = 'http://example.com'
+import django_heroku
 django_heroku.settings(locals())
