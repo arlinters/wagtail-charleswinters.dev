@@ -11,6 +11,18 @@ ALLOWED_HOSTS = ["*"]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+DATABASES = {
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'wagtail_cms',
+        'USER': 'wagtail',
+        'PASSWORD': '_dev9001_',
+        'HOST': 'db',
+        'PORT': '5432',
+    }
+
+}
 
 try:
     from .local import *

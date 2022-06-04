@@ -1,0 +1,48 @@
+version: "3.9"
+#https://realpython.com/django-development-with-docker-compose-and-machine/
+
+services:  
+  wagtail:
+    build: ./project
+    env_file: .env    
+    environment:
+      DEBUG: 'true'
+    expose:
+      - "8000"
+    links:
+      - "db:db"
+    volumes:
+      # - web-django:/usr/src/project
+      - web-static:/app/static
+
+    depends_on:
+      - db
+
+    
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+    volumes:
+      - web-static:/www/static
+    links:
+      - wagtail:wagtail
+      
+  db:
+    restart: always
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: wagtail
+      POSTGRES_DB: wagtail_cms
+      POSTGRES_PASSWORD: _dev9001_
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+volumes:
+  pgdata:
+  web-static:
+  web-django:
+      
