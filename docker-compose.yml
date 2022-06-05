@@ -3,37 +3,6 @@ version: "3.9"
 #https://github.com/realpython/dockerizing-django
 
 services:  
-  wagtail:
-    restart: always
-    build: ./project
-    env_file: .env    
-    environment:
-      DEBUG: 'true'
-    expose:
-      - "8000"
-    links:
-      - "db:db"
-    volumes:
-      - ./project:/app
-      - web-static:/app/static
-    command: >
-      bash -c "python manage.py migrate
-      && gunicorn project.wsgi:application --reload"
-    depends_on:
-      - db
-
-    
-  nginx:
-    restart: always
-    build: ./nginx/
-    env_file: .env    
-    ports:
-      - "80:80"
-    volumes:
-      - web-static:/www/static
-    links:
-      - wagtail:wagtail
-      
   db:
     restart: always
     image: postgres:latest
@@ -52,6 +21,5 @@ services:
         target: /var/lib/postgresql/data/
 
 volumes:
-  web-static:
   web-django:
       

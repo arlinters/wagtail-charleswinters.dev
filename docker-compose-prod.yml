@@ -4,16 +4,22 @@ version: "3.9"
 
 services:  
   wagtail:
+    restart: always
     build: ./project
     env_file: .env    
     environment:
-      DEBUG: 'False'
+      DEBUG: '${DEBUG}'
     expose:
       - "8000"
     links:
       - "db:db"
     volumes:
+      - ./project:/app
       - web-static:/app/static
+    command: >
+      bash -c "python manage.py migrate
+      && python manage.py collectstatic --noinput --clear
+      && gunicorn project.wsgi:application"
     depends_on:
       - db
 
@@ -21,6 +27,7 @@ services:
   nginx:
     restart: always
     build: ./nginx/
+    env_file: .env    
     ports:
       - "80:80"
     volumes:
@@ -31,10 +38,12 @@ services:
   db:
     restart: always
     image: postgres:latest
+
+    env_file: .env    
     environment:
-      POSTGRES_USER: wagtail
-      POSTGRES_DB: wagtail_cms
-      POSTGRES_PASSWORD: _dev9001_
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASS}
     ports:
       - "5432:5432"
     volumes:

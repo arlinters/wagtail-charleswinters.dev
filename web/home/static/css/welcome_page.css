@@ -9,18 +9,19 @@ html {
 }
 
 body {
+    background-color:red!important;
     max-width: 960px;
     min-height: 100vh;
     margin: 0 auto;
     padding: 0 15px;
-    color: #231f20;
+    color: red;
     font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
     line-height: 1.25;
 }
 
 a {
     background-color: transparent;
-    color: #308282;
+    color: red;
     text-decoration: underline;
 }
 
