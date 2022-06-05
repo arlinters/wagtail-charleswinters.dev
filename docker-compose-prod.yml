@@ -4,22 +4,16 @@ version: "3.9"
 
 services:  
   wagtail:
-    restart: always
     build: ./project
     env_file: .env    
     environment:
-      DEBUG: 'true'
+      DEBUG: 'False'
     expose:
       - "8000"
     links:
       - "db:db"
     volumes:
-      - ./project:/app
       - web-static:/app/static
-    command: >
-      bash -c "python manage.py migrate
-      && python manage.py collectstatic --noinput --clear
-      && gunicorn project.wsgi:application --reload"
     depends_on:
       - db
 

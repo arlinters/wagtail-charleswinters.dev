@@ -6,6 +6,11 @@ __pycache__
 db.sqlite3
 media
 
+# database mount#
+
+data/ 
+
+
 node_modules
 
 # Backup files # 
