@@ -26,6 +26,9 @@ DATABASES = {
 
 }
 
+INSTALLED_APPS = INSTALLED_APPS + ['django_browser_reload',]
+MIDDLEWARE = MIDDLEWARE + ['django_browser_reload.middleware.BrowserReloadMiddleware',]
+
 try:
     from .local import *
 except ImportError:
