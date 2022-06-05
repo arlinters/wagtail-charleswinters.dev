@@ -1,4 +1,6 @@
 from .base import *
+from dotenv import load_dotenv
+load_dotenv()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -15,11 +17,11 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wagtail_cms',
-        'USER': 'wagtail',
-        'PASSWORD': '_dev9001_',
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': os.getenv('DB_SERVICE'),
+        'PORT': os.getenv('DB_PORT')
     }
 
 }
