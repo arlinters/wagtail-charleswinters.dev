@@ -29,7 +29,9 @@
 
         {% include 'includes/navbar.html'%}
 
-        {% block content %}{% endblock %}
+      <div class="container has-background-white p-6">
+            {% block content %}{% endblock %}
+        </div>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/navbar-toggle.js' %}"></script>

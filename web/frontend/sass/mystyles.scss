@@ -25,6 +25,7 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
+
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
@@ -36,3 +37,6 @@ $input-shadow: none;
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
 @import "../node_modules/bulma/sass/helpers/_all.sass";
+
+
+ol{padding-left:1.25rem;}
